@@ -207,12 +207,12 @@ export default function CTA() {
             {/* Contact cards */}
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
-                href="mailto:hello@techvers.in"
+                href="mailto:official@techvers.in"
                 onClick={() =>
                   trackEvent(
                     "Contact",
                     "Email Click",
-                    "hello@techvers.in"
+                    "official@techvers.in"
                   )
                 }
                 className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-5 hover:border-[oklch(0.65_0.20_250/0.5)] hover:bg-white/[0.04] transition-all"
@@ -231,17 +231,17 @@ export default function CTA() {
                     Official Mail
                   </div>
                   <div className="mt-1 font-display font-bold text-foreground text-sm">
-                    hello@techvers.in
+                    official@techvers.in
                   </div>
                 </div>
               </a>
               <a
-                href="tel:+919302826662"
+                href="tel:+919682780369"
                 onClick={() =>
                   trackEvent(
                     "Contact",
                     "Phone Click",
-                    "+919302826662"
+                    "+919682780369"
                   )
                 }
                 className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-5 hover:border-[oklch(0.65_0.20_250/0.5)] hover:bg-white/[0.04] transition-all"
@@ -260,7 +260,7 @@ export default function CTA() {
                     Direct Line
                   </div>
                   <div className="mt-1 font-display font-bold text-foreground text-sm">
-                    +91 93028 26662
+                    +91 96827 80369
                   </div>
                 </div>
               </a>
