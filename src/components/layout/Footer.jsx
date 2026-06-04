@@ -26,7 +26,7 @@ const resources = [
   { label: "Privacy Policy", href: "#" },
 ];
 
-const offices = ["Bhopal", "Indore", "Ranchi", "Hyderabad", "Bangalore"];
+const offices = ["Bhopal", "Indore", "Ranchi", "Gorakhpur", "Jhansi", "Patna", "Nepal"];
 
 export default function Footer() {
   return (
@@ -97,17 +97,17 @@ export default function Footer() {
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-center gap-3 text-foreground">
                 <Phone size={16} style={{ color: "oklch(0.82 0.15 200)" }} />
-                +91 9302826662
+                +91 9682780369
               </li>
               <li className="flex items-center gap-3 text-foreground">
                 <Mail size={16} style={{ color: "oklch(0.82 0.15 200)" }} />
-                hello@techvers.in
+                official@techvers.in
               </li>
             </ul>
             <div className="mt-7">
               <div className="flex items-center gap-2 font-display text-sm font-bold uppercase tracking-[0.2em] text-foreground">
                 <MapPin size={16} style={{ color: "oklch(0.82 0.15 200)" }} />
-                Global Offices
+                Global Services
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {offices.map((o) => (
