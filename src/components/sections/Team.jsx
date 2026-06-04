@@ -9,7 +9,7 @@ const team = [
     role: "Technical Lead & AI Strategist",
     badge: "Lead Consultant",
     badgeColor: "oklch(0.78 0.18 155)",
-    tags: ["React Native", "Node.js", "APIs"],
+    tags: ["Data Analyst", "Data Scientist", "Data Visualization"],
     img: "/images/team/img1.jpg",
     expertise: "10+ years"
   },

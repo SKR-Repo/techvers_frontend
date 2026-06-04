@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axiosInstance from "../../apis/axiosInstance";
+import { trackEvent } from "../../utils/analytics";
+
 import {
   ArrowRight,
   Globe,
@@ -53,6 +55,7 @@ export default function CTA() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     // Client-side Validation (Fixed the return statements here)
     if (formData.name.trim().length < 2) {
       setToast({ type: "error", message: "Name must be at least 2 characters" });
@@ -85,17 +88,34 @@ export default function CTA() {
         customInterest: selectedInterests.includes("Other") ? customInterest.trim() : undefined,
         message: formData.message.trim() || undefined,
       };
-      
+
       await axiosInstance.post("/connection", payload);
+      trackEvent(
+        "Contact Form",
+        "Submit",
+        "Website Contact Form"
+      );
       setToast({ type: "success", message: "Inquiry submitted successfully! We'll be in touch soon." });
-      
+
       // Reset form
       setFormData({ name: "", email: "", phone: "", message: "" });
       setSelectedInterests([]);
       setCustomInterest("");
     } catch (err) {
-      const msg = err?.response?.data?.message || "Something went wrong. Please try again.";
-      setToast({ type: "error", message: msg });
+      trackEvent(
+        "Contact Form",
+        "Failed",
+        err?.response?.status?.toString() || "Unknown Error"
+      );
+
+      const msg =
+        err?.response?.data?.message ||
+        "Something went wrong. Please try again.";
+
+      setToast({
+        type: "error",
+        message: msg,
+      });
     } finally {
       setLoading(false);
     }
@@ -188,6 +208,13 @@ export default function CTA() {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href="mailto:hello@techvers.in"
+                onClick={() =>
+                  trackEvent(
+                    "Contact",
+                    "Email Click",
+                    "hello@techvers.in"
+                  )
+                }
                 className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-5 hover:border-[oklch(0.65_0.20_250/0.5)] hover:bg-white/[0.04] transition-all"
               >
                 <div
@@ -210,6 +237,13 @@ export default function CTA() {
               </a>
               <a
                 href="tel:+919302826662"
+                onClick={() =>
+                  trackEvent(
+                    "Contact",
+                    "Phone Click",
+                    "+919302826662"
+                  )
+                }
                 className="group flex items-center gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-5 hover:border-[oklch(0.65_0.20_250/0.5)] hover:bg-white/[0.04] transition-all"
               >
                 <div
@@ -257,13 +291,13 @@ export default function CTA() {
 
             {/* Name + Email + Phone */}
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
-              <Field 
-                label="Name" 
-                icon={User} 
+              <Field
+                label="Name"
+                icon={User}
                 name="name"
-                placeholder="John Doe" 
-                value={formData.name} 
-                onChange={handleChange} 
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={handleChange}
               />
               <Field
                 label="Email"
@@ -300,21 +334,20 @@ export default function CTA() {
                       key={opt}
                       type="button"
                       onClick={() => handleInterestToggle(opt)}
-                      className={`rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-                        active
-                          ? "text-white shadow-[0_8px_24px_-6px_oklch(0.65_0.20_250/0.6)]"
-                          : "text-muted-foreground hover:text-foreground"
-                      }`}
+                      className={`rounded-lg px-4 py-2 text-xs font-bold transition-all ${active
+                        ? "text-white shadow-[0_8px_24px_-6px_oklch(0.65_0.20_250/0.6)]"
+                        : "text-muted-foreground hover:text-foreground"
+                        }`}
                       style={
                         active
                           ? {
-                              background:
-                                "linear-gradient(135deg, oklch(0.65 0.20 250), oklch(0.55 0.22 265))",
-                            }
+                            background:
+                              "linear-gradient(135deg, oklch(0.65 0.20 250), oklch(0.55 0.22 265))",
+                          }
                           : {
-                              background: "oklch(0.22 0.04 265 / 0.6)",
-                              border: "1px solid oklch(1 0 0 / 0.08)",
-                            }
+                            background: "oklch(0.22 0.04 265 / 0.6)",
+                            border: "1px solid oklch(1 0 0 / 0.08)",
+                          }
                       }
                     >
                       {opt}
@@ -382,11 +415,10 @@ export default function CTA() {
                         toast.type === "success"
                           ? "oklch(0.35 0.10 155 / 0.4)"
                           : "oklch(0.35 0.18 25 / 0.4)",
-                      border: `1px solid ${
-                        toast.type === "success"
-                          ? "oklch(0.65 0.15 155 / 0.5)"
-                          : "oklch(0.65 0.20 25 / 0.5)"
-                      }`,
+                      border: `1px solid ${toast.type === "success"
+                        ? "oklch(0.65 0.15 155 / 0.5)"
+                        : "oklch(0.65 0.20 25 / 0.5)"
+                        }`,
                       color:
                         toast.type === "success"
                           ? "oklch(0.85 0.12 155)"
@@ -400,6 +432,13 @@ export default function CTA() {
             </div>
 
             <button
+              onClick={() =>
+                trackEvent(
+                  "CTA",
+                  "Click",
+                  "Book Consultation"
+                )
+              }
               type="submit"
               disabled={loading}
               className="group inline-flex w-full items-center justify-center gap-3 rounded-xl px-6 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white transition-all hover:-translate-y-0.5 disabled:pointer-events-none"
