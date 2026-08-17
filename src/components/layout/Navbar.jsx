@@ -38,7 +38,10 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a href="#top" className="flex items-center gap-3 shrink-0">
-          <div
+          <div className="grid h-12 w-40 place-items-center rounded-lg">
+            <img src="/techverse_logo.png" alt="techverse_logo" />
+          </div>
+          {/* <div
             className="grid h-10 w-10 place-items-center rounded-lg border backdrop-blur"
             style={{ borderColor: "oklch(0.82 0.15 200 / 0.35)", background: "oklch(0.82 0.15 200 / 0.10)" }}
           >
@@ -49,7 +52,7 @@ export default function Navbar() {
             <div className="font-mono text-[9px] tracking-[0.25em] uppercase" style={{ color: "oklch(0.82 0.15 200)" }}>
               Digital Innovation
             </div>
-          </div>
+          </div> */}
         </a>
 
         {/* Pill nav */}

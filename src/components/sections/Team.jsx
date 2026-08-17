@@ -16,30 +16,39 @@ const team = [
   {
     name: "Ayodhya Gupta",
     role: "Founder & Lead Engineer",
-    badge: "Director",
+    badge: "Founder",
     badgeColor: "oklch(0.65 0.20 250)",
     tags: ["Strategy", "Full-Stack", "Architecture"],
     img: "/images/team/img2.jpeg",
-    expertise: "10+ years"
+    expertise: "4+ years"
   },  
   {
     name: "Shubham Rai",
-    role: "Full-Stack Developer",
-    badge: "Lead Consultant",
+    role: "Full-Stack AI Developer & Lead Manager",
+    badge: "Director",
     badgeColor: "oklch(0.75 0.18 65)",
     tags: ["MERN", "Next.js", "DevOps"],
     img: "/images/team/img3.jpg",
-    expertise: "10+ years"
+    expertise: "3+ years"
   },
   {
-    name: "Himanshu Chaurasia",
-    role: "AI Engineering Lead",
-    badge: "Director",
+    name: "Vansh Sahu",
+    role: "Video-Editor",
+    badge: "Video-Editor",
     badgeColor: "oklch(0.65 0.20 250)",
     tags: ["LLM", "RAG", "Automation"],
-    img: "/images/team/img4.jpg",
-    expertise: "10+ years"
+    img: "/images/team/img5.jpeg",
+    expertise: "3+ years"
   },
+  // {
+  //   name: "Himanshu Chaurasia",
+  //   role: "AI Engineering Lead",
+  //   badge: "Director",
+  //   badgeColor: "oklch(0.65 0.20 250)",
+  //   tags: ["LLM", "RAG", "Automation"],
+  //   img: "/images/team/img4.jpg",
+  //   expertise: "10+ years"
+  // },
 ];
 
 export default function Team() {
